@@ -35,7 +35,7 @@ app.get('/employees' , (req, res) => {
 })
 
 app.get('/employees/:id', (req, res) => {
-  mysqlConnection.query('select * from employee where empid =', (err, rows, fields) => {
+  mysqlConnection.query('select * from employee where empid = ?',[req.params.id] , (err, rows, fields) => {
     if(!err) {
       console.log(rows);
       res.json(rows);
