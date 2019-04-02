@@ -4,7 +4,9 @@
   "description": "sample project based on Express, Handlebars and MySql",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-server": "nodemon index.js"
   },
   "author": "Rajeshwar Reddy Kadari",
   "license": "ISC",
@@ -12,5 +14,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
