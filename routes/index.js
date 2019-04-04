@@ -11,10 +11,9 @@ router.get('/', function(req, res, next) {
 router.get('/employees' , (req, res) => {
   mysqlConnection.query('select * from employee', (err, rows, fields) => {
     if(!err) {
-      console.log(rows);
-      res.json(rows);
+      res.send(rows);
     } else {
-      console.log(err);
+      res.send(err);
     }
   })
 });
@@ -23,10 +22,9 @@ router.get('/employees' , (req, res) => {
 router.get('/employees/:id', (req, res) => {
   mysqlConnection.query('select * from employee where empid = ?',[req.params.id] , (err, rows, fields) => {
     if(!err) {
-      console.log(rows);
-      res.json(rows);
+      res.send(rows);
     } else {
-      console.log(err);
+      res.send(err);
     }
   })
 });
@@ -36,10 +34,8 @@ router.post('/employees', (req,res) => {
   console.log(sql);
   mysqlConnection.query(sql, (err, rows, fields) => {
     if(!err) {
-      console.log("inserted Succesfully");
       res.send("inserted Succesfully")
     } else {
-      console.log(err);
       res.send(err);
     }
   })
@@ -50,10 +46,8 @@ router.put('/employees', (req,res) => {
   console.log(sql);
   mysqlConnection.query(sql, (err, rows, fields) => {
     if(!err) {
-      console.log("updated Succesfully");
       res.send("updated Succesfully");
     } else {
-      console.log(err);
       res.send(err);
     }
   })
@@ -62,10 +56,9 @@ router.put('/employees', (req,res) => {
 router.delete('/employees/:id', (req,res) => {
   mysqlConnection.query('delete from employee where empid = ?',[req.params.id] , (err, rows, fields) => {
     if(!err) {
-      console.log("Deleted Succesfully : ", req.params.id);
       res.send("Deleted Succesfully");
     } else {
-      throw err;
+      res.send(err);
     }
   })
 });
