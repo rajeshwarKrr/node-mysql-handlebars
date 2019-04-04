@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mysqlConnection = require('../config/db');
 
-/* GET home page. */
+// GET home page.
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Cool, huh!', condition: true, anyArray: [1,2,3] });
 });
@@ -16,7 +16,6 @@ router.get('/employees' , (req, res) => {
     } else {
       console.log(err);
     }
-
   })
 });
 
