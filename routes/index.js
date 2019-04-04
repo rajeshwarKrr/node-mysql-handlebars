@@ -7,6 +7,19 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Cool, huh!', condition: true, anyArray: [1,2,3] });
 });
 
+// Fetch all employees
+router.get('/employees' , (req, res) => {
+  mysqlConnection.query('select * from employee', (err, rows, fields) => {
+    if(!err) {
+      console.log(rows);
+      res.json(rows);
+    } else {
+      console.log(err);
+    }
+
+  })
+});
+
 // Fetch one employee using id
 router.get('/employees/:id', (req, res) => {
   mysqlConnection.query('select * from employee where empid = ?',[req.params.id] , (err, rows, fields) => {
